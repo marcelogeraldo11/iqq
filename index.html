@@ -30,22 +30,59 @@
             }
         }
     </script>
+    <style>
+        /* Indicador de carga del video */
+        .video-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2rem;
+            z-index: 5;
+        }
+        
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body class="min-h-screen overflow-hidden relative">
-    <!-- Video Background -->
-    <div class="fixed inset-0 z-0">
+    <!-- Video de fondo -->
+    <div class="absolute inset-0 z-0">
+        <!-- Indicador de carga -->
+        <div id="video-loader" class="video-loading">
+            <div class="loading-spinner"></div>
+            <div class="text-center">Cargando video...</div>
+        </div>
+        
         <video 
-            autoplay 
-            muted 
-            loop 
-            playsinline 
-            preload="auto"
-            class="w-full h-full object-cover"
-            id="bg-video"
-        >
-            <source src="video.mp4" type="video/mp4">
-            Tu navegador no soporta la reproducción de video.
-        </video>
+             autoplay 
+             muted 
+             loop 
+             playsinline 
+             preload="metadata"
+             poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect width='1920' height='1080' fill='%23000'/%3E%3C/svg%3E"
+             class="w-full h-full object-cover"
+             id="bg-video"
+             loading="lazy"
+         >
+             <!-- Fuentes de video optimizadas -->
+             <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+             <source src="video.mp4" type="video/mp4">
+             Tu navegador no soporta la reproducción de video.
+         </video>
         <!-- Overlay sutil -->
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     </div>
@@ -103,28 +140,82 @@
     </div>
 
     <script>
-        // Configuración del video
+        // Configuración del video optimizada
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.getElementById('bg-video');
-            if (video) {
+            const loader = document.getElementById('video-loader');
+            
+            if (video && loader) {
+                // Configurar atributos del video
                 video.muted = true;
                 video.autoplay = true;
                 video.loop = true;
                 video.playsInline = true;
                 
-                // Forzar reproducción
-                video.play().catch(function(error) {
-                    console.log('Video autoplay failed:', error);
+                // Mostrar loader inicialmente
+                loader.style.display = 'block';
+                
+                // Configuración de carga optimizada
+                const optimizeVideoLoading = () => {
+                    // Detectar conexión lenta
+                    if ('connection' in navigator) {
+                        const connection = navigator.connection;
+                        if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+                            loader.innerHTML = '<div class="text-center">Conexión lenta detectada<br>Cargando versión optimizada...</div>';
+                            video.style.filter = 'blur(2px)';
+                        }
+                    }
+                    
+                    // Timeout para ocultar loader si tarda mucho
+                    setTimeout(() => {
+                        if (loader.style.display !== 'none') {
+                            loader.style.display = 'none';
+                            console.log('Video loading timeout - hiding loader');
+                        }
+                    }, 10000); // 10 segundos máximo
+                };
+                
+                // Eventos del video
+                video.addEventListener('loadstart', () => {
+                    console.log('Video loading started');
                 });
                 
-                // Reanudar cuando la página sea visible
-                document.addEventListener('visibilitychange', function() {
+                video.addEventListener('loadedmetadata', () => {
+                    console.log('Video metadata loaded');
+                });
+                
+                video.addEventListener('canplay', () => {
+                    console.log('Video can start playing');
+                    loader.style.display = 'none';
+                    video.play().catch(e => {
+                        console.log('Error al reproducir video:', e);
+                        loader.innerHTML = '<div class="text-center">Error al cargar video<br>Reintentando...</div>';
+                        setTimeout(() => loader.style.display = 'none', 3000);
+                    });
+                });
+                
+                video.addEventListener('playing', () => {
+                    console.log('Video is playing');
+                    loader.style.display = 'none';
+                });
+                
+                video.addEventListener('error', (e) => {
+                    console.error('Video error:', e);
+                    loader.innerHTML = '<div class="text-center">Error al cargar video</div>';
+                    setTimeout(() => loader.style.display = 'none', 3000);
+                });
+                
+                // Reanudar reproducción cuando la página sea visible
+                document.addEventListener('visibilitychange', () => {
                     if (!document.hidden && video.paused) {
-                        video.play().catch(function(error) {
-                            console.log('Video play failed:', error);
+                        video.play().catch(e => {
+                            console.log('Error al reanudar video:', e);
                         });
                     }
                 });
+                
+                // Inicializar optimizaciones
+                optimizeVideoLoading();
             }
 
             // Nueva propuesta de animaciones GSAP
