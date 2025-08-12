@@ -78,8 +78,6 @@
              id="bg-video"
              loading="lazy"
          >
-             <!-- Fuentes de video optimizadas -->
-             <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
              <source src="video.mp4" type="video/mp4">
              Tu navegador no soporta la reproducción de video.
          </video>
@@ -97,6 +95,12 @@
             <p id="subtitle" class="text-xl md:text-2xl text-white/90 font-semibold drop-shadow-lg opacity-0">
                 Conecta con nosotros
             </p>
+            <div id="services-text" class="text-lg md:text-xl text-white/80 font-medium drop-shadow-lg opacity-0 mt-4 max-w-4xl text-center leading-relaxed">
+                <p>Servicios audiovisuales</p>
+                <p>Certificados AOC</p>
+                <p>Cursos credencial</p>
+                <p>Vuelos nocturnos</p>
+            </div>
         </div>
 
         <!-- Dock de Contacto -->
@@ -285,6 +289,18 @@
                  rotationY: 0,
                  ease: "back.out(1.7)"
              }, "-=0.3");
+             
+             // Animación del texto de servicios
+             const servicesText = document.getElementById('services-text');
+             if (servicesText) {
+                 gsap.to(servicesText, {
+                     opacity: 1,
+                     y: 0,
+                     duration: 1.2,
+                     ease: "power2.out",
+                     delay: 3.2
+                 });
+             }
              
              // Solo efecto de luminiscencia continua
               gsap.to(title, {
