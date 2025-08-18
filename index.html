@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,7 +42,7 @@
             font-size: 1.2rem;
             z-index: 5;
         }
-        
+
         .loading-spinner {
             border: 3px solid rgba(255, 255, 255, 0.3);
             border-top: 3px solid white;
@@ -51,13 +52,19 @@
             animation: spin 1s linear infinite;
             margin: 0 auto 10px;
         }
-        
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body class="min-h-screen overflow-hidden relative">
     <!-- Video de fondo -->
     <div class="absolute inset-0 z-0">
@@ -66,99 +73,94 @@
             <div class="loading-spinner"></div>
             <div class="text-center">Cargando video...</div>
         </div>
-        
-        <video 
-             autoplay 
-             muted 
-             loop 
-             playsinline 
-             preload="metadata"
-             poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect width='1920' height='1080' fill='%23000'/%3E%3C/svg%3E"
-             class="w-full h-full object-cover"
-             id="bg-video"
-             loading="lazy"
-         >
-             <source src="video.mp4" type="video/mp4">
-             Tu navegador no soporta la reproducción de video.
-         </video>
+
+        <video autoplay muted loop playsinline preload="metadata"
+            poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect width='1920' height='1080' fill='%23000'/%3E%3C/svg%3E"
+            class="w-full h-full object-cover" id="bg-video" loading="lazy">
+            <source src="video.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+        </video>
         <!-- Overlay sutil -->
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
     </div>
 
+    <!-- Header con logo -->
+    <header class="relative z-10 w-full">
+        <!-- Logo izquierdo -->
+        <div class="absolute top-6 left-6">
+            <img id="logoLeft" src="arriba a la izquierda.png" alt="Logo izquierdo"
+                class="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300">
+        </div>
+        <!-- Logo derecho -->
+        <div class="absolute top-6 right-6">
+            <img id="logoFilms" src="arriba a la derecha.png" alt="Logo derecho"
+                class="h-20 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300">
+        </div>
+    </header>
+
     <!-- Contenido Principal -->
     <div class="relative z-10 min-h-screen flex flex-col items-center justify-center p-4">
-        <!-- Título -->
-        <div class="text-center mb-16 animate-fade-in">
-            <h1 id="main-title" class="text-6xl md:text-8xl font-bold text-white mb-4 drop-shadow-2xl">
-                Iquique desde el aire
-            </h1>
-            <p id="subtitle" class="text-xl md:text-2xl text-white/90 font-semibold drop-shadow-lg opacity-0">
-                Conecta con nosotros
-            </p>
-            <div id="services-text" class="text-lg md:text-xl text-white/80 font-medium drop-shadow-lg opacity-0 mt-4 max-w-4xl text-center leading-relaxed">
-                <p>Servicios audiovisuales</p>
-                <p>Certificados AOC</p>
-                <p>Cursos credencial</p>
-                <p>Vuelos nocturnos</p>
-            </div>
-        </div>
 
         <!-- Dock de Contacto -->
-         <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-20">
-             <div id="contact-dock" class="bg-white/10 backdrop-blur-xl rounded-3xl p-6 border border-white/20 shadow-2xl opacity-0">
-                <div class="flex gap-6 items-center justify-center">
-                    <!-- Facebook -->
-                    <div class="tooltip tooltip-top" data-tip="Facebook">
-                        <a href="https://www.facebook.com/iquiquedesdeelaire" target="_blank" 
-                           class="btn btn-circle btn-lg bg-gradient-to-br from-blue-500 to-blue-700 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/50 group">
-                            <i class="fab fa-facebook-f text-white text-xl group-hover:scale-110 transition-transform"></i>
-                        </a>
-                    </div>
+        <!-- Texto izquierda -->
+        <div class="fixed bottom-12 left-2 z-20 text-white text-sm font-bold tracking-wider">
+            EQUIPOS: INSPIRE2 - MAVIC2CINE - MAVIC2CINE - MATRICE43 - AVATA 2
+        </div>
 
-                    <!-- Instagram -->
-                    <div class="tooltip tooltip-top" data-tip="Instagram">
-                        <a href="https://www.instagram.com/iquiquedesdeelaire/" target="_blank" 
-                           class="btn btn-circle btn-lg bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/50 group">
-                            <i class="fab fa-instagram text-white text-xl group-hover:scale-110 transition-transform"></i>
-                        </a>
-                    </div>
+        <!-- Rectángulo con redes sociales -->
+        <div id="contact-dock"
+            class="fixed bottom-12 left-1/2 transform -translate-x-1/2 z-20 bg-white/10 backdrop-blur-xl rounded-3xl p-6 border border-white/20 shadow-2xl opacity-0 flex gap-6 items-center justify-center">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/iquiquedesdeelaire" target="_blank"
+                class="tooltip tooltip-top btn btn-circle btn-lg bg-gradient-to-br from-blue-500 to-blue-700 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/50 group flex items-center justify-center"
+                data-tip="Facebook">
+                <i class="fab fa-facebook-f text-white text-xl group-hover:scale-110 transition-transform"></i>
+            </a>
 
-                    <!-- Email -->
-                    <div class="tooltip tooltip-top" data-tip="Email">
-                        <a href="mailto:contacto@iquiquedesdeelaire.cl" 
-                           class="btn btn-circle btn-lg bg-gradient-to-br from-purple-500 to-indigo-600 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50 group">
-                            <i class="fas fa-envelope text-white text-xl group-hover:scale-110 transition-transform"></i>
-                        </a>
-                    </div>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/iquiquedesdeelaire/" target="_blank"
+                class="tooltip tooltip-top btn btn-circle btn-lg bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/50 group flex items-center justify-center"
+                data-tip="Instagram">
+                <i class="fab fa-instagram text-white text-xl group-hover:scale-110 transition-transform"></i>
+            </a>
 
-                    <!-- Teléfono -->
-                    <div class="tooltip tooltip-top" data-tip="Teléfono">
-                        <a href="tel:+56993469261" 
-                           class="btn btn-circle btn-lg bg-gradient-to-br from-green-500 to-emerald-600 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/50 group">
-                            <i class="fas fa-phone text-white text-xl group-hover:scale-110 transition-transform"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <!-- Email -->
+            <a href="mailto:contacto@iquiquedesdeelaire.cl"
+                class="tooltip tooltip-top btn btn-circle btn-lg bg-gradient-to-br from-purple-500 to-indigo-600 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50 group flex items-center justify-center"
+                data-tip="Email">
+                <i class="fas fa-envelope text-white text-xl group-hover:scale-110 transition-transform"></i>
+            </a>
+
+            <!-- Teléfono -->
+            <a href="tel:+56993469261"
+                class="tooltip tooltip-top btn btn-circle btn-lg bg-gradient-to-br from-green-500 to-emerald-600 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/50 group flex items-center justify-center"
+                data-tip="Teléfono">
+                <i class="fas fa-phone text-white text-xl group-hover:scale-110 transition-transform"></i>
+            </a>
+        </div>
+
+        <!-- Texto derecha -->
+        <div class="fixed bottom-12 right-32 z-20 text-white text-sm font-bold tracking-wider">
+            EMPRESA AOC 1412 CON 14 AÑOS DE EXPERIENCIA
         </div>
     </div>
 
     <script>
         // Configuración del video optimizada
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const video = document.getElementById('bg-video');
             const loader = document.getElementById('video-loader');
-            
+
             if (video && loader) {
                 // Configurar atributos del video
                 video.muted = true;
                 video.autoplay = true;
                 video.loop = true;
                 video.playsInline = true;
-                
+
                 // Mostrar loader inicialmente
                 loader.style.display = 'block';
-                
+
                 // Configuración de carga optimizada
                 const optimizeVideoLoading = () => {
                     // Detectar conexión lenta
@@ -169,7 +171,7 @@
                             video.style.filter = 'blur(2px)';
                         }
                     }
-                    
+
                     // Timeout para ocultar loader si tarda mucho
                     setTimeout(() => {
                         if (loader.style.display !== 'none') {
@@ -178,16 +180,16 @@
                         }
                     }, 10000); // 10 segundos máximo
                 };
-                
+
                 // Eventos del video
                 video.addEventListener('loadstart', () => {
                     console.log('Video loading started');
                 });
-                
+
                 video.addEventListener('loadedmetadata', () => {
                     console.log('Video metadata loaded');
                 });
-                
+
                 video.addEventListener('canplay', () => {
                     console.log('Video can start playing');
                     loader.style.display = 'none';
@@ -197,18 +199,18 @@
                         setTimeout(() => loader.style.display = 'none', 3000);
                     });
                 });
-                
+
                 video.addEventListener('playing', () => {
                     console.log('Video is playing');
                     loader.style.display = 'none';
                 });
-                
+
                 video.addEventListener('error', (e) => {
                     console.error('Video error:', e);
                     loader.innerHTML = '<div class="text-center">Error al cargar video</div>';
                     setTimeout(() => loader.style.display = 'none', 3000);
                 });
-                
+
                 // Reanudar reproducción cuando la página sea visible
                 document.addEventListener('visibilitychange', () => {
                     if (!document.hidden && video.paused) {
@@ -217,100 +219,102 @@
                         });
                     }
                 });
-                
+
                 // Inicializar optimizaciones
                 optimizeVideoLoading();
             }
 
-            // Nueva propuesta de animaciones GSAP
-             const title = document.getElementById('main-title');
-             const subtitle = document.getElementById('subtitle');
-             const dock = document.getElementById('contact-dock');
-             
-             // Efecto de escritura letra por letra
-             const titleText = "Iquique desde el aire";
-             title.innerHTML = "";
-             
-             // Crear spans para cada letra
-             titleText.split('').forEach((char, index) => {
-                 const span = document.createElement('span');
-                 span.textContent = char === ' ' ? '\u00A0' : char;
-                 span.style.opacity = '0';
-                 span.style.transform = 'rotateY(90deg)';
-                 span.style.display = 'inline-block';
-                 title.appendChild(span);
-             });
-             
-             // Timeline principal
-             const tl = gsap.timeline();
-             
-             // Animación de escritura 3D
-             tl.to(title.children, {
-                 duration: 0.1,
-                 opacity: 1,
-                 rotateY: 0,
-                 stagger: 0.05,
-                 ease: "back.out(1.7)"
-             })
-             // Efecto de brillo después de escribir
-             .to(title, {
-                 duration: 0.5,
-                 textShadow: "0 0 30px #fff, 0 0 60px #fff, 0 0 90px #00ffff",
-                 scale: 1.05,
-                 ease: "power2.out"
-             })
-             .to(title, {
-                 duration: 0.3,
-                 textShadow: "0 0 10px rgba(255,255,255,0.8)",
-                 scale: 1,
-                 ease: "power2.out"
-             })
-             // Subtítulo con efecto de deslizamiento
-             .fromTo(subtitle, {
-                 opacity: 0,
-                 x: -200,
-                 rotationX: 45
-             }, {
-                 duration: 1,
-                 opacity: 1,
-                 x: 0,
-                 rotationX: 0,
-                 ease: "elastic.out(1, 0.5)"
-             }, "-=0.5")
-             // Dock con efecto de materialización
-             .fromTo(dock, {
-                 opacity: 0,
-                 scale: 0,
-                 rotationY: 180
-             }, {
-                 duration: 1.2,
-                 opacity: 1,
-                 scale: 1,
-                 rotationY: 0,
-                 ease: "back.out(1.7)"
-             }, "-=0.3");
-             
-             // Animación del texto de servicios
-             const servicesText = document.getElementById('services-text');
-             if (servicesText) {
-                 gsap.to(servicesText, {
-                     opacity: 1,
-                     y: 0,
-                     duration: 1.2,
-                     ease: "power2.out",
-                     delay: 3.2
-                 });
-             }
-             
-             // Solo efecto de luminiscencia continua
-              gsap.to(title, {
-                  duration: 4,
-                  textShadow: "0 0 20px rgba(0,255,255,0.6), 0 0 40px rgba(0,255,255,0.4)",
-                  repeat: -1,
-                  yoyo: true,
-                  ease: "sine.inOut"
-              });
+            // Animaciones GSAP para el nuevo diseño
+            const dock = document.getElementById('contact-dock');
+            const header = document.querySelector('header');
+            const logoFilms = header.querySelector('img[alt="films PROFESSIONAL DRONE"]');
+
+            // Timeline principal
+            const tl = gsap.timeline();
+
+            // Animación de entrada del logo izquierdo
+            tl.fromTo(document.getElementById('logoLeft'), {
+                opacity: 0,
+                x: -100,
+                rotation: -15,
+                scale: 0.8
+            }, {
+                duration: 1.5,
+                opacity: 0.9,
+                x: 0,
+                rotation: 0,
+                scale: 1,
+                ease: "back.out(1.7)"
+            })
+                // Animación de entrada del logo films
+                .fromTo(logoFilms, {
+                    opacity: 0,
+                    x: 100,
+                    rotation: 15,
+                    scale: 0.8
+                }, {
+                    duration: 1.5,
+                    opacity: 0.9,
+                    x: 0,
+                    rotation: 0,
+                    scale: 1,
+                    ease: "back.out(1.7)"
+                }, "-=1.2")
+                // Dock con efecto de materialización
+                .fromTo(dock, {
+                    opacity: 0,
+                    scale: 0,
+                    rotationY: 180
+                }, {
+                    duration: 1.2,
+                    opacity: 1,
+                    scale: 1,
+                    rotationY: 0,
+                    ease: "back.out(1.7)"
+                }, "-=0.8");
+
+            // Efectos hover para el logo izquierdo
+            const logoLeft = document.getElementById('logoLeft');
+            logoLeft.addEventListener('mouseenter', () => {
+                gsap.to(logoLeft, {
+                    duration: 0.3,
+                    rotation: -5,
+                    scale: 1.05,
+                    ease: "power2.out"
+                });
+            });
+
+            logoLeft.addEventListener('mouseleave', () => {
+                gsap.to(logoLeft, {
+                    duration: 0.3,
+                    rotation: 0,
+                    scale: 1,
+                    ease: "power2.out"
+                });
+            });
+
+            // Efectos hover para el logo films
+            if (logoFilms) {
+                logoFilms.addEventListener('mouseenter', () => {
+                    gsap.to(logoFilms, {
+                        duration: 0.3,
+                        rotation: 5,
+                        scale: 1.05,
+                        ease: "power2.out"
+                    });
+                });
+
+                logoFilms.addEventListener('mouseleave', () => {
+                    gsap.to(logoFilms, {
+                        duration: 0.3,
+                        rotation: 0,
+                        scale: 1,
+                        ease: "power2.out"
+                    });
+                });
+            }
         });
     </script>
 </body>
+
 </html>

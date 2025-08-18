@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 150" width="400" height="150">
+  <!-- Background transparente -->
+  <rect width="400" height="150" fill="transparent"/>
+  
+  <!-- Símbolo/icono decorativo a la izquierda -->
+  <g transform="translate(30, 30)">
+    <!-- Forma principal del símbolo -->
+    <path d="M0 45 Q0 20 20 10 Q40 0 60 10 Q80 20 80 45 L80 70 Q80 90 60 90 L20 90 Q0 90 0 70 Z" fill="white" opacity="0.9"/>
+    <!-- Detalles internos -->
+    <circle cx="25" cy="45" r="8" fill="#333" opacity="0.7"/>
+    <circle cx="55" cy="45" r="8" fill="#333" opacity="0.7"/>
+    <rect x="35" y="60" width="10" height="15" fill="#333" opacity="0.6"/>
+  </g>
+  
+  <!-- Texto principal "films" -->
+  <text x="140" y="70" font-family="Arial, sans-serif" font-size="36" font-weight="300" fill="white" letter-spacing="4px">films</text>
+  
+  <!-- Línea decorativa -->
+  <line x1="140" y1="85" x2="350" y2="85" stroke="white" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Texto secundario "PROFESSIONAL DRONE" -->
+  <text x="140" y="110" font-family="Arial, sans-serif" font-size="14" font-weight="400" fill="white" letter-spacing="3px" opacity="0.9">PROFESSIONAL DRONE</text>
+</svg>
