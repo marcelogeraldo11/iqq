@@ -94,7 +94,7 @@
         <!-- Logo derecho -->
         <div class="absolute top-6 right-6">
             <img id="logoFilms" src="arriba a la derecha.png" alt="Logo derecho"
-                class="h-20 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300">
+                class="h-10 md:h-20 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300">
         </div>
     </header>
 
@@ -102,45 +102,55 @@
     <div class="relative z-10 min-h-screen flex flex-col items-center justify-center p-4">
 
         <!-- Dock de Contacto -->
-        <!-- Texto izquierda -->
-        <div class="fixed bottom-12 left-2 z-20 text-white text-sm font-bold tracking-wider">
+        <!-- Textos móvil arriba del dock -->
+        <div class="block lg:hidden fixed bottom-32 left-1/2 transform -translate-x-1/2 z-20 text-white text-xs text-center max-w-xs">
+            <div class="mb-2 font-bold tracking-wider">
+                EQUIPOS: INSPIRE2 - MAVIC2CINE - MAVIC2CINE - MATRICE43 - AVATA 2
+            </div>
+            <div class="font-bold tracking-wider">
+                EMPRESA AOC 1412 CON 14 AÑOS DE EXPERIENCIA
+            </div>
+        </div>
+
+        <!-- Texto izquierda desktop -->
+        <div class="hidden lg:block fixed bottom-12 left-16 z-20 text-white text-sm font-bold tracking-wider">
             EQUIPOS: INSPIRE2 - MAVIC2CINE - MAVIC2CINE - MATRICE43 - AVATA 2
         </div>
 
         <!-- Rectángulo con redes sociales -->
         <div id="contact-dock"
-            class="fixed bottom-12 left-1/2 transform -translate-x-1/2 z-20 bg-white/10 backdrop-blur-xl rounded-3xl p-6 border border-white/20 shadow-2xl opacity-0 flex gap-6 items-center justify-center">
+            class="fixed bottom-4 md:bottom-12 left-1/2 transform -translate-x-1/2 z-20 bg-white/10 backdrop-blur-xl rounded-3xl p-3 md:p-6 border border-white/20 shadow-2xl opacity-0 flex gap-3 md:gap-6 items-center justify-center">
             <!-- Facebook -->
             <a href="https://www.facebook.com/iquiquedesdeelaire" target="_blank"
-                class="tooltip tooltip-top btn btn-circle btn-lg bg-gradient-to-br from-blue-500 to-blue-700 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/50 group flex items-center justify-center"
+                class="tooltip tooltip-top btn btn-circle btn-md md:btn-lg bg-gradient-to-br from-blue-500 to-blue-700 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/50 group flex items-center justify-center"
                 data-tip="Facebook">
-                <i class="fab fa-facebook-f text-white text-xl group-hover:scale-110 transition-transform"></i>
+                <i class="fab fa-facebook-f text-white text-lg md:text-xl group-hover:scale-110 transition-transform"></i>
             </a>
 
             <!-- Instagram -->
             <a href="https://www.instagram.com/iquiquedesdeelaire/" target="_blank"
-                class="tooltip tooltip-top btn btn-circle btn-lg bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/50 group flex items-center justify-center"
+                class="tooltip tooltip-top btn btn-circle btn-md md:btn-lg bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/50 group flex items-center justify-center"
                 data-tip="Instagram">
-                <i class="fab fa-instagram text-white text-xl group-hover:scale-110 transition-transform"></i>
+                <i class="fab fa-instagram text-white text-lg md:text-xl group-hover:scale-110 transition-transform"></i>
             </a>
 
             <!-- Email -->
             <a href="mailto:contacto@iquiquedesdeelaire.cl"
-                class="tooltip tooltip-top btn btn-circle btn-lg bg-gradient-to-br from-purple-500 to-indigo-600 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50 group flex items-center justify-center"
+                class="tooltip tooltip-top btn btn-circle btn-md md:btn-lg bg-gradient-to-br from-purple-500 to-indigo-600 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50 group flex items-center justify-center"
                 data-tip="Email">
-                <i class="fas fa-envelope text-white text-xl group-hover:scale-110 transition-transform"></i>
+                <i class="fas fa-envelope text-white text-lg md:text-xl group-hover:scale-110 transition-transform"></i>
             </a>
 
             <!-- Teléfono -->
             <a href="tel:+56993469261"
-                class="tooltip tooltip-top btn btn-circle btn-lg bg-gradient-to-br from-green-500 to-emerald-600 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/50 group flex items-center justify-center"
+                class="tooltip tooltip-top btn btn-circle btn-md md:btn-lg bg-gradient-to-br from-green-500 to-emerald-600 border-0 hover:scale-110 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/50 group flex items-center justify-center"
                 data-tip="Teléfono">
-                <i class="fas fa-phone text-white text-xl group-hover:scale-110 transition-transform"></i>
+                <i class="fas fa-phone text-white text-lg md:text-xl group-hover:scale-110 transition-transform"></i>
             </a>
         </div>
 
         <!-- Texto derecha -->
-        <div class="fixed bottom-12 right-32 z-20 text-white text-sm font-bold tracking-wider">
+        <div class="hidden lg:block fixed bottom-12 right-32 z-20 text-white text-sm font-bold tracking-wider">
             EMPRESA AOC 1412 CON 14 AÑOS DE EXPERIENCIA
         </div>
     </div>
